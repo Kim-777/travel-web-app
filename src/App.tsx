@@ -1,6 +1,7 @@
 import React from "react";
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
 import "./App.css";
+import ToDoList from "./components/ToDoList";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -44,8 +45,8 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
   font-family: "Noto Sans KR", sans-serif;
-  background-color: ${(props) => props.theme.bgColor};
-  color: ${(props) => props.theme.textColor}
+  background-color: "white";
+  color: "black"
 }
 ol, ul {
 	list-style: none;
@@ -73,7 +74,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <div>hi</div>
+      <ToDoList />
     </>
   );
 }
