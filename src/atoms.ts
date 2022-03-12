@@ -30,3 +30,16 @@ export const toDoSelector = selector({
     return toDos.filter((toDo) => toDo.category === category);
   },
 });
+
+interface ITrelloToDoState {
+  [key: string]: string[];
+}
+
+export const trelloToDoState = atom<ITrelloToDoState>({
+  key: "trelloToDo",
+  default: {
+    to_do: ["a", "e", "f"],
+    doing: ["d"],
+    done: ["b", "c"],
+  },
+});
