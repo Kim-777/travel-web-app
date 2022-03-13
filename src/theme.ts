@@ -7,7 +7,7 @@ import { DefaultTheme } from "styled-components";
 // };
 
 export const darkTheme: DefaultTheme = {
-  bgColor: "#3F8CF2",
-  borderColor: "#DADFE9",
+  bgColor: "#f0fff7",
+  borderColor: "#dfbdff",
   cardColor: "white",
 };

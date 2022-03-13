@@ -32,17 +32,38 @@ function App() {
     console.log("info :::: ", info);
 
     const { destination, draggableId, source } = info;
-
+    if (!destination) return;
     if (destination?.droppableId === source?.droppableId) {
-      setToDos((oldToDos) => {
-        const boardCopy = [...oldToDos[destination?.droppableId]];
+      setToDos((allBoard) => {
+        const boardCopy = [...allBoard[destination?.droppableId]];
 
         const [item] = boardCopy.splice(source.index, 1);
+        // console.log("item :::: ", item);
         boardCopy.splice(destination.index, 0, item);
 
         return {
-          ...oldToDos,
+          ...allBoard,
           [destination.droppableId]: boardCopy,
+        };
+      });
+    }
+    if (destination?.droppableId !== source?.droppableId) {
+      setToDos((allBoard) => {
+        const destinationToDos = [...allBoard[destination?.droppableId]];
+        const startToDos = [...allBoard[source?.droppableId]];
+
+        // console.log("destinationToDos :::: ", destinationToDos);
+
+        const [item] = startToDos.splice(source.index, 1);
+        // console.log("item ::: ", item);
+        destinationToDos.splice(destination.index, 0, item);
+
+        return {
+          ...allBoard,
+          [source?.droppableId]: allBoard[source?.droppableId].filter(
+            (_notUsed, index) => index !== source.index
+          ),
+          [destination.droppableId]: destinationToDos,
         };
       });
     }

@@ -31,15 +31,23 @@ export const toDoSelector = selector({
   },
 });
 
+export interface ITrelloToDo {
+  id: number;
+  text: string;
+}
+
 interface ITrelloToDoState {
-  [key: string]: string[];
+  [key: string]: ITrelloToDo[];
 }
 
 export const trelloToDoState = atom<ITrelloToDoState>({
   key: "trelloToDo",
   default: {
-    to_do: ["a", "e", "f"],
-    doing: ["d"],
-    done: ["b", "c"],
+    to_do: [
+      { id: 1, text: ">>>" },
+      { id: 2, text: "asdasd" },
+    ],
+    doing: [{ id: 3, text: "ddddd" }],
+    done: [],
   },
 });
