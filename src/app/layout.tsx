@@ -2,6 +2,8 @@ import Modal from "@/components/modals/Modal";
 import NavBar from "../components/navbar/NavBar";
 import "./globals.css";
 import { Nunito } from "next/font/google";
+import RegisterModal from "@/components/modals/RegisterModal";
+import ToasterProvider from "@/providers/ToasterProvider";
 
 export const metadata = {
   title: "traveler",
@@ -20,7 +22,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={nunito.className}>
       <body>
-        {/* <Modal isOpen /> */}
+        <ToasterProvider />
+        <RegisterModal />
         <NavBar />
         {children}
       </body>
